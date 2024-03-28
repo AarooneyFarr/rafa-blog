@@ -5,9 +5,7 @@ function page() {
     return (
         <div className="flex min-h-screen flex-col justify-between bg-base-100">
             <Header />
-            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 px-10 md:grid-cols-2 ">
-                <Posts />
-            </div>
+            <Posts />
             <Footer />
         </div>
     )
@@ -123,44 +121,48 @@ const posts = [
 ]
 
 const Posts = () => {
-    return posts.map((post, index) => {
-        return (
-            <div
-                key={index}
-                className="rounded-lg bg-cover bg-center bg-no-repeat pt-24"
-                style={{ backgroundImage: `url(${post.image})` }}
-            >
-                {/* <Image src={post.image} height={500} width={500} alt="blog image" className="bg-cover" /> */}
-                <div className="  rounded-b-lg bg-base-200 px-4 pb-5">
-                    <div className=" flex items-center">
-                        <h1 className="text-2xl font-bold tracking-widest lg:text-3xl">{post.title}</h1>
-                        <button className="btn btn-ghost flex">
-                            <div className="">{post.likes}</div>
+    return (
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 px-10 md:grid-cols-2 ">
+            {posts.map((post, index) => {
+                return (
+                    <div
+                        key={index}
+                        className="rounded-lg bg-cover bg-center bg-no-repeat pt-24"
+                        style={{ backgroundImage: `url(${post.image})` }}
+                    >
+                        {/* <Image src={post.image} height={500} width={500} alt="blog image" className="bg-cover" /> */}
+                        <div className="  rounded-b-lg bg-base-200 px-4 pb-5">
+                            <div className=" flex items-center">
+                                <h1 className="text-2xl font-bold tracking-widest lg:text-3xl">{post.title}</h1>
+                                <button className="btn btn-ghost flex">
+                                    <div className="">{post.likes}</div>
 
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="h-6 w-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z"
-                                />
-                            </svg>
-                        </button>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="h-6 w-6"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div className="flex items-center text-base-content/60">
+                                <div className="font-semibold">{post.author}</div>
+                                <div className="pl-2">{post.readTime}</div>
+                                <div className="pl-5 text-xs">{'Published: ' + post.published}</div>
+                            </div>
+                            <div className="line-clamp-2 text-xs text-base-content/50">{post.preview}</div>
+                        </div>
                     </div>
-                    <div className="flex items-center text-base-content/60">
-                        <div className="font-semibold">{post.author}</div>
-                        <div className="pl-2">{post.readTime}</div>
-                        <div className="pl-5 text-xs">{'Published: ' + post.published}</div>
-                    </div>
-                    <div className="line-clamp-2 text-xs text-base-content/50">{post.preview}</div>
-                </div>
-            </div>
-        )
-    })
+                )
+            })}
+        </div>
+    )
 }
