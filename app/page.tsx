@@ -125,15 +125,17 @@ const Posts = () => {
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 px-10 md:grid-cols-2 ">
             {posts.map((post, index) => {
                 return (
-                    <div
+                    <button
                         key={index}
-                        className="rounded-lg bg-cover bg-center bg-no-repeat pt-24"
+                        className=" rounded-lg bg-cover bg-center bg-no-repeat pt-24 hover:brightness-95"
                         style={{ backgroundImage: `url(${post.image})` }}
                     >
                         {/* <Image src={post.image} height={500} width={500} alt="blog image" className="bg-cover" /> */}
                         <div className="  rounded-b-lg bg-base-200 px-4 pb-5">
                             <div className=" flex items-center">
-                                <h1 className="text-2xl font-bold tracking-widest lg:text-3xl">{post.title}</h1>
+                                <h1 className="text-left text-2xl font-bold tracking-widest lg:text-3xl">
+                                    {post.title}
+                                </h1>
                                 <button className="btn btn-ghost flex">
                                     <div className="">{post.likes}</div>
 
@@ -160,7 +162,7 @@ const Posts = () => {
                             </div>
                             <div className="line-clamp-2 text-xs text-base-content/50">{post.preview}</div>
                         </div>
-                    </div>
+                    </button>
                 )
             })}
         </div>
